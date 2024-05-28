@@ -1,0 +1,69 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+int romanToInt(char *);
+int romanToInt1(char );
+
+int main()
+{
+   char arr[]="CIXXV";
+   int v=romanToInt(arr);
+   printf("%d",v);
+    return 0;
+}
+
+
+int romanToInt(char *s)
+    {
+        int i=0,num=0;
+         while(s[i])
+    {
+        if(romanToInt1(s[i])>=romanToInt1(s[i+1]))
+        {
+            num=num+romanToInt1(s[i]);
+        }
+        else
+        {
+            num=num+romanToInt1(s[i+1])-romanToInt1(s[i]);
+            i++;
+        }
+        i++;
+    }
+    return num;
+
+            
+}
+
+   
+int romanToInt1(char s)
+{
+ int count=0;
+        
+         switch(s)
+         {
+             case 'I':
+                         count=1;                  
+                     break;
+
+            case 'V':count=5;
+                       break;
+
+            case 'X':count=10;
+                        break;
+            case'L':count=50;
+                      break;
+            case 'C': count=100;
+                break;
+            case 'D': count=500;
+                break;                      
+            case 'M': count=1000;
+                break;   
+         }
+     return count;
+}
